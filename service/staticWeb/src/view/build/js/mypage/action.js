@@ -1,30 +1,8 @@
-export const getOnClickAddTimerButton = ({ addTimer }) => {
-  return () => {
-    addTimer()
-  }
-}
+export const getOnClickConvertMessageButton = ({ convertMessage, showConvertResult }) => {
+  return async () => {
+    const convertResult = await convertMessage()
+    showConvertResult({ convertResult })
 
-export const getOnClickSaveMessageButton = ({ saveMessage }) => {
-  return () => {
-    saveMessage()
-  }
-}
-
-export const getOnClickDeleteMessageButton = ({ deleteMessage }) => {
-  return () => {
-    deleteMessage()
-  }
-}
-
-export const getOnSubmitBackupEmailAddress = ({ saveBackupEmailAddress }) => {
-  return () => {
-    saveBackupEmailAddress()
-  }
-}
-
-export const getOnSubmitUploadForm = ({ uploadFile }) => {
-  return () => {
-    uploadFile()
   }
 }
 

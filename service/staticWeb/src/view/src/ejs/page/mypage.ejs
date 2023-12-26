@@ -1,36 +1,75 @@
 <%- include(`${xdevkitComponentPath}head.ejs`, { title, description, author, })  %>
-  <%- include(`${xdevkitComponentPath}includeCss.ejs`, { inlineCssList, externalCssList, isProduction, })  %>
-  <body class='flex flex-col'>
+<%- include(`${xdevkitComponentPath}includeCss.ejs`, { inlineCssList, externalCssList, isProduction, })  %>
+<body class='flex flex-col'>
 
-    <%- include(`${componentPath}nav.ejs`)  %>
-    <%- include(`${xdevkitComponentPath}notification.ejs`)  %>
-    <%- include(`${xdevkitComponentPath}breadcrumb.ejs`, { breadcrumbList })  %>
-    <div class='section1 min-h-80 flex flex-col text-left text-black md:flex items-center justify-center flex-grow p-16'>
-      <div class='font-bold text-3xl max-w-lg bg-gray-100 p-6 rounded shadow-xl max-w-4xl w-full'>
-        <h2 class='text-center mb-2'>MY PAGE</h2>
-        <%- include(`${componentPath}profile.ejs`)  %>
+  <%- include(`${componentPath}nav.ejs`)  %>
+  <%- include(`${xdevkitComponentPath}notification.ejs`)  %>
+  <%- include(`${xdevkitComponentPath}breadcrumb.ejs`, { breadcrumbList })  %>
+  <div class='section1 flex flex-row text-left text-black md:flex items-center justify-center flex-grow'>
+    <div class='max-w-3xl bg-gray-100 p-6 rounded shadow-xl w-full mx-auto flex flex-col justify-center'>
+      <h2>mecab sample</h2>
+      <div class='bg-white rounded-lg shadow p-4 mb-4 flex flex-col h-screen'>
+        <div id='convertContainer' class='w-full'>
+          <div class='flex items-center mb-4'>
+            <textarea id='messageContent' class='w-full h-24 border' placeholder='吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗い じめじめした所でニャーニャー泣いていた事だけは記憶している。'></textarea>
+          </div>
+          <button id='convertMessageBtn' class='w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-8'>変換</button>
+          <div class='flex items-center mb-4'>
+            <textarea id='convertResultTextArea' class='w-full h-48 border' placeholder='吾輩	名詞,代名詞,一般,*,*,*,吾輩,ワガハイ,ワガハイ
+は	助詞,係助詞,*,*,*,*,は,ハ,ワ
+猫	名詞,一般,*,*,*,*,猫,ネコ,ネコ
+で	助動詞,*,*,*,特殊・ダ,連用形,だ,デ,デ
+ある	助動詞,*,*,*,五段・ラ行アル,基本形,ある,アル,アル
+。	記号,句点,*,*,*,*,。,。,。
+名前	名詞,一般,*,*,*,*,名前,ナマエ,ナマエ
+は	助詞,係助詞,*,*,*,*,は,ハ,ワ
+まだ	副詞,助詞類接続,*,*,*,*,まだ,マダ,マダ
+無い	形容詞,自立,*,*,形容詞・アウオ段,基本形,無い,ナイ,ナイ
+。	記号,句点,*,*,*,*,。,。,。
+どこ	名詞,代名詞,一般,*,*,*,どこ,ドコ,ドコ
+で	助詞,格助詞,一般,*,*,*,で,デ,デ
+生れ	動詞,自立,*,*,一段,連用形,生れる,ウマレ,ウマレ
+た	助動詞,*,*,*,特殊・タ,基本形,た,タ,タ
+かとん	名詞,一般,*,*,*,*,火遁,カトン,カトン
+と	助詞,格助詞,一般,*,*,*,と,ト,ト
+見当	名詞,サ変接続,*,*,*,*,見当,ケントウ,ケントー
+が	助詞,格助詞,一般,*,*,*,が,ガ,ガ
+つか	動詞,自立,*,*,五段・カ行イ音便,未然形,つく,ツカ,ツカ
+ぬ	助動詞,*,*,*,特殊・ヌ,基本形,ぬ,ヌ,ヌ
+。	記号,句点,*,*,*,*,。,。,。
+何	名詞,代名詞,一般,*,*,*,何,ナニ,ナニ
+でも	助詞,副助詞,*,*,*,*,でも,デモ,デモ
+薄暗い	形容詞,自立,*,*,形容詞・アウオ段,基本形,薄暗い,ウスグライ,ウスグライ
+じめじめ	副詞,一般,*,*,*,*,じめじめ,ジメジメ,ジメジメ
+した	名詞,一般,*,*,*,*,した,シタ,シタ
+所	名詞,接尾,一般,*,*,*,所,ショ,ショ
+で	助詞,格助詞,一般,*,*,*,で,デ,デ
+ニャーニャー	副詞,一般,*,*,*,*,ニャーニャー,ニャーニャー,ニャーニャー
+泣い	動詞,自立,*,*,五段・カ行イ音便,連用タ接続,泣く,ナイ,ナイ
+て	助詞,接続助詞,*,*,*,*,て,テ,テ
+いた事	名詞,一般,*,*,*,*,いた事,イタコト,イタコト
+だけ	助詞,副助詞,*,*,*,*,だけ,ダケ,ダケ
+は	助詞,係助詞,*,*,*,*,は,ハ,ワ
+記憶	名詞,サ変接続,*,*,*,*,記憶,キオク,キオク
+し	動詞,自立,*,*,サ変・スル,連用形,する,シ,シ
+て	助詞,接続助詞,*,*,*,*,て,テ,テ
+いる	動詞,非自立,*,*,一段,基本形,いる,イル,イル
+。	記号,句点,*,*,*,*,。,。,。
+EOS'></textarea>
+          </div>
+        </div>
+
+        <div id='textLibPermissionRequestContainer' class='flex justify-center mb-4 hidden'>
+          <button id='textLibPermissionRequestBtn' data-id='xloginLoginBtn' data-permission='rw:$CLIENT_ID:text_lib_v1' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>XLogin</button>
+        </div>
+
       </div>
     </div><!-- section1 -->
 
-    <div class='section1 min-h-80 flex flex-row text-left text-black md:flex items-center justify-center flex-grow p-16'>
-      <div class='font-bold text-3xl max-w-lg bg-gray-100 p-6 rounded shadow-xl max-w-4xl w-full flex flex-col justify-center'>
-        <div id='tabMenuContainerWrap'class='text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 mb-4'>
-        </div>
-        <div class='text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700'>
-          <%- include(`${componentPath}editor.ejs`)  %>
-          <%- include(`${componentPath}timer.ejs`)  %>
-          <%- include(`${componentPath}backupEmailAddressForm.ejs`)  %>
-          <%- include(`${componentPath}upload.ejs`)  %>
-        </div>
-        </div>
-      </div>
-    </div>
-
-    <%- include(`${xdevkitComponentPath}tab.ejs`)  %>
-    <%- include(`${xdevkitComponentPath}loading.ejs`)  %>
+    <!--    <%- include(`${xdevkitComponentPath}loading.ejs`)  %> -->
     <%- include(`${xdevkitComponentPath}modal.ejs`)  %>
     <div id='hiddenForTailwindByJs' class='hidden w-full h-96 p-1'></div>
-  </body>
-  <%- include(`${xdevkitComponentPath}includeJs.ejs`, { inlineScriptList, externalScriptList, isProduction, })  %>
+</body>
+<%- include(`${xdevkitComponentPath}includeJs.ejs`, { inlineScriptList, externalScriptList, isProduction, })  %>
 
 
