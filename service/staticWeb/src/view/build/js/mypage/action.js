@@ -2,7 +2,6 @@ export const getOnClickConvertMessageButton = ({ convertMessage, showConvertResu
   return async () => {
     const convertResult = await convertMessage()
     showConvertResult({ convertResult })
-
   }
 }
 
